@@ -40,14 +40,14 @@ my-app/
 From inside `my-app/`:
 
 ```bash
-bash path/to/agent-standards/scripts/bootstrap-project.sh .
+bash path/to/agent-standards/scripts/bootstrap-project.sh
 ```
 
 Later refreshes:
 
 ```bash
-bash path/to/agent-standards/scripts/sync-standards.sh --dry-run .
-bash path/to/agent-standards/scripts/sync-standards.sh --update .
+bash path/to/agent-standards/scripts/sync-standards.sh --dry-run
+bash path/to/agent-standards/scripts/sync-standards.sh --update
 ```
 
 ## Root File Pattern

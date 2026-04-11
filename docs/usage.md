@@ -2,10 +2,20 @@
 
 This repository is meant to be consumed in small pieces. The default workflow is to download a snapshot into a target repo, run bootstrap or sync from that snapshot, and keep the target repo's root files locally owned.
 
+## Fastest Install
+
+From inside the target repo:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/init-framework.sh | bash -s .
+```
+
+That downloads a temporary snapshot of this repo, bootstraps the current project, and cleans up afterward.
+
 ## Recommended Workflow For A New Project
 
 1. From inside the target repo, download or extract a snapshot of this repository.
-2. Run `bash path/to/agent-standards/scripts/bootstrap-project.sh .`.
+2. Run `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/init-framework.sh | bash -s .`.
 3. Fill in the placeholders in the generated project-local files.
 4. Keep local agent files focused on repo-specific deltas.
 5. Add only the skills and standards the team expects to use regularly.
@@ -25,7 +35,7 @@ Suggested first-pass imports for a modern web app:
 ## Recommended Workflow For An Existing Project
 
 1. Download or extract a fresh snapshot of this repository.
-2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run .`.
+2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run`.
 3. Compare existing local conventions against shared standards before applying updates.
 4. Apply additive sync or explicit update sync only for files you want refreshed.
 5. Capture repo-specific exceptions in local files instead of forking shared standards immediately.

@@ -2,6 +2,16 @@
 
 Shared standards, reusable workflows, and lightweight agent-facing instructions for software projects.
 
+## Quick Start
+
+From inside a new or existing project:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/init-framework.sh | bash -s .
+```
+
+That command downloads a temporary snapshot of this repo and bootstraps the current project. If you are already in the target repo root, the trailing `.` is optional.
+
 This repository is designed to be a practical source of truth for teams that want consistent engineering guidance across many repos without building a heavy orchestration system. It works well with Codex first, supports Claude Code cleanly, and keeps most guidance agent-agnostic.
 
 ## What This Repo Is For
@@ -9,6 +19,7 @@ This repository is designed to be a practical source of truth for teams that wan
 Use this repository to centralize:
 
 - shared coding and review standards
+- shared git and collaboration conventions
 - reusable agent workflows captured as skills
 - thin project templates for `AGENTS.md` and `CLAUDE.md`
 - simple bootstrap and sync scripts for downstream repos
@@ -39,16 +50,15 @@ Recommended usage modes:
 
 This is the default and simplest workflow.
 
-- from inside the target repo, download or extract a snapshot of this repo into a temporary folder
-- run `scripts/bootstrap-project.sh` from that snapshot against `.`
+- run `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/init-framework.sh | bash -s .`
 - fill in the generated local files
-- optionally delete the downloaded snapshot afterward
+- the temporary snapshot is cleaned up automatically
 
 ### 2. Re-download later and sync selected files
 
 Best when a project wants a lightweight refresh path without keeping a permanent linked copy.
 
-- download a fresh snapshot of this repo when you want updates
+- download or extract a fresh snapshot of this repo when you want updates
 - preview changes with `scripts/sync-standards.sh --dry-run`
 - apply additive or explicit update sync as needed
 
@@ -119,14 +129,14 @@ When standards change:
 For a new repo:
 
 1. From inside the target repo, download or extract a snapshot of this repository somewhere local or temporary.
-2. Run `bash path/to/agent-standards/scripts/bootstrap-project.sh .`.
+2. Run `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/init-framework.sh | bash -s .`.
 3. Fill in the project-local placeholders in `AGENTS.md`, `CLAUDE.md`, and `docs/agent-setup.md`.
-4. Optionally delete the downloaded snapshot after setup.
+4. Optionally remove any local snapshot you downloaded manually.
 
 For an existing repo:
 
 1. Download or extract a fresh snapshot of this repository.
-2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run .`.
+2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run`.
 3. Apply additive sync or explicit update sync only where intended.
 4. Resolve conflicts explicitly instead of forcing a broad rewrite.
 

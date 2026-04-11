@@ -19,6 +19,7 @@ required_files=(
   "templates/AGENTS.project-template.md"
   "templates/CLAUDE.project-template.md"
   "templates/README.project-setup-template.md"
+  "scripts/init-framework.sh"
   "scripts/bootstrap-project.sh"
   "scripts/sync-standards.sh"
   "scripts/validate-repo.sh"
@@ -71,15 +72,21 @@ if ! grep -Fq "docs/releases.md" "${REPO_ROOT}/CONTRIBUTING.md"; then
 fi
 
 echo "Checking script help output..."
-bootstrap_help="$(bash "${REPO_ROOT}/scripts/bootstrap-project.sh" 2>&1 || true)"
-sync_help="$(bash "${REPO_ROOT}/scripts/sync-standards.sh" 2>&1 || true)"
+init_help="$(bash "${REPO_ROOT}/scripts/init-framework.sh" --help 2>&1 || true)"
+bootstrap_help="$(bash "${REPO_ROOT}/scripts/bootstrap-project.sh" --help 2>&1 || true)"
+sync_help="$(bash "${REPO_ROOT}/scripts/sync-standards.sh" --help 2>&1 || true)"
 
-if [[ "${bootstrap_help}" != *"Usage: bootstrap-project.sh TARGET_REPO"* ]]; then
+if [[ "${init_help}" != *"Usage: init-framework.sh [TARGET_REPO]"* ]]; then
+  echo "init-framework.sh help output did not match expectation" >&2
+  exit 1
+fi
+
+if [[ "${bootstrap_help}" != *"Usage: bootstrap-project.sh [TARGET_REPO]"* ]]; then
   echo "bootstrap-project.sh help output did not match expectation" >&2
   exit 1
 fi
 
-if [[ "${sync_help}" != *"Usage: sync-standards.sh [--dry-run] [--update] TARGET_REPO"* ]]; then
+if [[ "${sync_help}" != *"Usage: sync-standards.sh [--dry-run] [--update] [TARGET_REPO]"* ]]; then
   echo "sync-standards.sh help output did not match expectation" >&2
   exit 1
 fi

@@ -28,3 +28,15 @@ This repository uses a lightweight change log for downstream consumers. The goal
 - Added: explicit downloaded-snapshot workflow guidance for bootstrapping and refreshing from inside a target repo.
 - Changed: documentation now treats downloaded snapshots as the default consumption path instead of implying a persistent linked copy.
 - Downstream impact: the simplest recommended setup is now to download a snapshot, run bootstrap or sync from it, and optionally discard the snapshot afterward.
+
+## 2026-04-11
+
+- Added: `standards/git-standards.md` covering semantic branch naming, conventional commits, PR hygiene, merge strategy, and ticket linking defaults.
+- Changed: standards coverage now explicitly includes shared git and collaboration conventions.
+- Downstream impact: downstream repos that do not already define local git workflow conventions can adopt this file as the shared default.
+
+## 2026-04-11
+
+- Added: `scripts/init-framework.sh` for one-line bootstrap via `curl ... | bash -s .`.
+- Changed: README and usage docs now surface install instructions near the top and treat the curl-based installer as the fastest path.
+- Downstream impact: new projects can initialize directly from inside the target repo without manually downloading a snapshot first.

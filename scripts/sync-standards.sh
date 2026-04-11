@@ -4,11 +4,12 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: sync-standards.sh [--dry-run] [--update] TARGET_REPO
+Usage: sync-standards.sh [--dry-run] [--update] [TARGET_REPO]
 
 Syncs shared standards and skills into TARGET_REPO without removing files.
 By default, only files that do not already exist are copied.
 Use --update to replace existing files when their contents differ.
+If TARGET_REPO is omitted, the current directory is used.
 
 Use --dry-run to preview actions.
 EOF
@@ -17,9 +18,9 @@ EOF
 DRY_RUN=0
 UPDATE=0
 
-if [[ $# -eq 0 ]]; then
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
   usage
-  exit 1
+  exit 0
 fi
 
 if [[ "${1:-}" == "--dry-run" ]]; then
@@ -37,14 +38,14 @@ if [[ "${1:-}" == "--dry-run" ]]; then
   shift
 fi
 
-if [[ $# -ne 1 ]]; then
+if [[ $# -gt 1 ]]; then
   usage
   exit 1
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-TARGET_REPO="$1"
+TARGET_REPO="${1:-.}"
 
 if [[ ! -d "${TARGET_REPO}" ]]; then
   echo "Target repo does not exist: ${TARGET_REPO}" >&2

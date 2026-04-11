@@ -4,21 +4,27 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: bootstrap-project.sh TARGET_REPO
+Usage: bootstrap-project.sh [TARGET_REPO]
 
 Copies thin project templates and a default starter set of standards into TARGET_REPO.
 This script is additive and will not overwrite existing files.
+If TARGET_REPO is omitted, the current directory is used.
 EOF
 }
 
-if [[ $# -ne 1 ]]; then
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if [[ $# -gt 1 ]]; then
   usage
   exit 1
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-TARGET_REPO="$1"
+TARGET_REPO="${1:-.}"
 
 if [[ ! -d "${TARGET_REPO}" ]]; then
   echo "Target repo does not exist: ${TARGET_REPO}" >&2

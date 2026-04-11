@@ -13,6 +13,7 @@ These standards are the shared engineering policy layer for downstream repos. Im
 - [backend-standards.md](backend-standards.md): API design, persistence safety, authorization, and reliability practices.
 - [accessibility-standards.md](accessibility-standards.md): semantic UI, keyboard support, focus behavior, and accessible interaction quality.
 - [migration-standards.md](migration-standards.md): schema change safety, backfills, rollout order, and rollback awareness.
+- [git-standards.md](git-standards.md): branch naming, conventional commits, PR hygiene, merge strategy, and issue linking conventions.
 
 ## Usage
 
