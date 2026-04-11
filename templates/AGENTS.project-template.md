@@ -2,32 +2,34 @@
 
 This repository uses shared engineering standards plus a thin local agent file for repo-specific guidance.
 
+This file is intentionally minimal after bootstrap. Agents may replace these defaults when the repo has real local facts to record, but they should not invent commands, architecture, or constraints.
+
 ## Shared Standards
 
-- Local shared standards live in: `[path to synced or copied standards directory]`
-- Local reusable skills live in: `[path to synced or copied skills directory]`
+- Local shared standards live in: `standards/`
+- Local reusable skills live in: `skills/`
 
 Agents should use shared standards for durable guidance and keep this file focused on repo-specific deltas.
 
 ## Repo-Specific Commands
 
-- Dev: `[command]`
-- Lint: `[command]`
-- Test: `[command]`
-- Typecheck: `[command]`
-- Build: `[command]`
+- Dev: not configured yet
+- Lint: not configured yet
+- Test: not configured yet
+- Typecheck: not configured yet
+- Build: not configured yet
 
 ## Local Architecture Notes
 
-- App/framework: `[e.g. Next.js app router, Express API, Remix]`
-- Key domains: `[billing, auth, admin, reporting]`
-- Sensitive flows: `[payments, roles, PII, destructive actions]`
+- App/framework: not recorded yet
+- Key domains: not recorded yet
+- Sensitive flows: not recorded yet
 
 ## Local Constraints And Exceptions
 
-- `[constraint or deployment limitation]`
-- `[approved exception to shared standards]`
-- `[legacy area that needs incremental migration]`
+- Add repo-specific constraints here when known.
+- Add approved exceptions to shared standards here when needed.
+- Add legacy migration notes here when relevant.
 
 ## Working Expectations
 

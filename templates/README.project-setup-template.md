@@ -8,6 +8,13 @@ Default import model:
 - run bootstrap or sync scripts from that snapshot against this repo
 - keep this repo's root agent files locally owned
 
+Important:
+
+- bootstrap generates valid-but-incomplete root agent files
+- replace defaults only when the repo has real local facts
+- do not invent repo details just to make the files look complete
+- keep unresolved areas marked as `not configured yet` or `not recorded yet` until real decisions exist
+
 ## Recommended Local Files
 
 - `AGENTS.md`: repo-specific instructions for Codex-style agents
