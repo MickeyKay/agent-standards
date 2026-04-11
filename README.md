@@ -12,6 +12,23 @@ curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scrip
 
 That command downloads a temporary snapshot of this repo and bootstraps the current project. If you are already in the target repo root, the trailing `.` is optional.
 
+## Update Existing Project
+
+When you want to refresh shared standards or skills later:
+
+1. Download or extract a fresh snapshot of this repo.
+2. From inside the target repo, preview updates:
+
+```bash
+bash path/to/agent-standards/scripts/sync-standards.sh --dry-run
+```
+
+3. Apply the refresh when ready:
+
+```bash
+bash path/to/agent-standards/scripts/sync-standards.sh --update
+```
+
 This repository is designed to be a practical source of truth for teams that want consistent engineering guidance across many repos without building a heavy orchestration system. It works well with Codex first, supports Claude Code cleanly, and keeps most guidance agent-agnostic.
 
 ## What This Repo Is For
@@ -39,28 +56,6 @@ That keeps the system maintainable:
 - shared guidance stays in one place
 - project-specific deltas stay local
 - agents get small, relevant context instead of duplicated prose
-
-## How Downstream Repos Should Consume It
-
-Use this repo as a package of text assets and scripts, not as a runtime dependency.
-
-Recommended usage modes:
-
-### 1. Download a snapshot into a new repo
-
-This is the default and simplest workflow.
-
-- run `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/init-framework.sh | bash -s .`
-- fill in the generated local files
-- the temporary snapshot is cleaned up automatically
-
-### 2. Re-download later and sync selected files
-
-Best when a project wants a lightweight refresh path without keeping a permanent linked copy.
-
-- download or extract a fresh snapshot of this repo when you want updates
-- preview changes with `scripts/sync-standards.sh --dry-run`
-- apply additive or explicit update sync as needed
 
 ## Release And Sync Expectations
 
