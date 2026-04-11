@@ -32,7 +32,6 @@ if [[ ! -d "${TARGET_REPO}" ]]; then
   exit 1
 fi
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEFAULT_REF="main"
 REPO_SLUG="MickeyKay/agent-standards"
 REF="${AGENT_STANDARDS_REF:-${DEFAULT_REF}}"
