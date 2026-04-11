@@ -40,3 +40,9 @@ This repository uses a lightweight change log for downstream consumers. The goal
 - Added: `scripts/init-framework.sh` for one-line bootstrap via `curl ... | bash -s .`.
 - Changed: README and usage docs now surface install instructions near the top and treat the curl-based installer as the fastest path.
 - Downstream impact: new projects can initialize directly from inside the target repo without manually downloading a snapshot first.
+
+## 2026-04-11
+
+- Added: `scripts/update-framework.sh` for one-line refresh via `curl ... | bash -s -- --dry-run .` or `--update .`.
+- Changed: README and usage docs now give the same curl-style experience for both install and update flows.
+- Downstream impact: existing projects can refresh shared standards and skills without manually downloading a snapshot first.

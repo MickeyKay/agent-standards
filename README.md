@@ -14,19 +14,18 @@ That command downloads a temporary snapshot of this repo and bootstraps the curr
 
 ## Update Existing Project
 
-When you want to refresh shared standards or skills later:
+When you want to refresh shared standards or skills later from inside the target repo:
 
-1. Download or extract a fresh snapshot of this repo.
-2. From inside the target repo, preview updates:
+1. Preview updates:
 
 ```bash
-bash path/to/agent-standards/scripts/sync-standards.sh --dry-run
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --dry-run .
 ```
 
-3. Apply the refresh when ready:
+2. Apply the refresh when ready:
 
 ```bash
-bash path/to/agent-standards/scripts/sync-standards.sh --update
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --update .
 ```
 
 This repository is designed to be a practical source of truth for teams that want consistent engineering guidance across many repos without building a heavy orchestration system. It works well with Codex first, supports Claude Code cleanly, and keeps most guidance agent-agnostic.
@@ -130,9 +129,9 @@ For a new repo:
 
 For an existing repo:
 
-1. Download or extract a fresh snapshot of this repository.
-2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run`.
-3. Apply additive sync or explicit update sync only where intended.
+1. Preview changes with `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --dry-run .`.
+2. Apply additive sync or explicit update sync only where intended.
+3. Use `--update` when you want changed shared files refreshed.
 4. Resolve conflicts explicitly instead of forcing a broad rewrite.
 
 See [docs/usage.md](docs/usage.md) and [docs/sync-strategy.md](docs/sync-strategy.md) for the detailed workflow.

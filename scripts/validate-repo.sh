@@ -20,6 +20,7 @@ required_files=(
   "templates/CLAUDE.project-template.md"
   "templates/README.project-setup-template.md"
   "scripts/init-framework.sh"
+  "scripts/update-framework.sh"
   "scripts/bootstrap-project.sh"
   "scripts/sync-standards.sh"
   "scripts/validate-repo.sh"
@@ -73,11 +74,17 @@ fi
 
 echo "Checking script help output..."
 init_help="$(bash "${REPO_ROOT}/scripts/init-framework.sh" --help 2>&1 || true)"
+update_help="$(bash "${REPO_ROOT}/scripts/update-framework.sh" --help 2>&1 || true)"
 bootstrap_help="$(bash "${REPO_ROOT}/scripts/bootstrap-project.sh" --help 2>&1 || true)"
 sync_help="$(bash "${REPO_ROOT}/scripts/sync-standards.sh" --help 2>&1 || true)"
 
 if [[ "${init_help}" != *"Usage: init-framework.sh [TARGET_REPO]"* ]]; then
   echo "init-framework.sh help output did not match expectation" >&2
+  exit 1
+fi
+
+if [[ "${update_help}" != *"Usage: update-framework.sh [--dry-run] [--update] [TARGET_REPO]"* ]]; then
+  echo "update-framework.sh help output did not match expectation" >&2
   exit 1
 fi
 

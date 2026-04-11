@@ -46,8 +46,8 @@ bash path/to/agent-standards/scripts/bootstrap-project.sh
 Later refreshes:
 
 ```bash
-bash path/to/agent-standards/scripts/sync-standards.sh --dry-run
-bash path/to/agent-standards/scripts/sync-standards.sh --update
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --dry-run .
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --update .
 ```
 
 ## Root File Pattern

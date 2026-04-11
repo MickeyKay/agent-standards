@@ -12,6 +12,17 @@ curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scrip
 
 That downloads a temporary snapshot of this repo, bootstraps the current project, and cleans up afterward.
 
+## Fastest Refresh
+
+From inside the target repo:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --dry-run .
+curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --update .
+```
+
+That downloads a temporary snapshot, runs the shared sync logic against the current project, and cleans up afterward.
+
 ## Recommended Workflow For A New Project
 
 1. From inside the target repo, download or extract a snapshot of this repository.
@@ -35,7 +46,7 @@ Suggested first-pass imports for a modern web app:
 ## Recommended Workflow For An Existing Project
 
 1. Download or extract a fresh snapshot of this repository.
-2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run`.
+2. Preview changes with `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --dry-run .`.
 3. Compare existing local conventions against shared standards before applying updates.
 4. Apply additive sync or explicit update sync only for files you want refreshed.
 5. Capture repo-specific exceptions in local files instead of forking shared standards immediately.

@@ -53,9 +53,9 @@ This third model is the best default for root agent files.
 
 Practical script guidance:
 
-- use `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run` to preview from inside the target repo
-- use `bash path/to/agent-standards/scripts/sync-standards.sh` for additive sync only
-- use `bash path/to/agent-standards/scripts/sync-standards.sh --update` when you intentionally want changed shared files refreshed
+- use `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --dry-run .` to preview from inside the target repo
+- use `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- .` for additive sync only
+- use `curl -sSL https://raw.githubusercontent.com/MickeyKay/agent-standards/main/scripts/update-framework.sh | bash -s -- --update .` when you intentionally want changed shared files refreshed
 - review `docs/releases.md` before update syncs across many repos
 
 ## When To Copy Instead
