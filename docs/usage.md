@@ -1,15 +1,15 @@
 # Usage
 
-This repository is meant to be consumed in small pieces. Most downstream repos should copy or sync only the files they actually need.
+This repository is meant to be consumed in small pieces. The default workflow is to download a snapshot into a target repo, run bootstrap or sync from that snapshot, and keep the target repo's root files locally owned.
 
 ## Recommended Workflow For A New Project
 
-1. Bootstrap the repo with `scripts/bootstrap-project.sh`.
-2. Fill in the placeholders in the generated project-local files.
-3. Copy or sync a small set of shared standards that match the project.
-4. Add only the skills the team expects agents to use regularly.
-5. Keep local agent files focused on repo-specific deltas.
-6. Review `docs/releases.md` before later refreshes from the shared repo.
+1. From inside the target repo, download or extract a snapshot of this repository.
+2. Run `bash path/to/agent-standards/scripts/bootstrap-project.sh .`.
+3. Fill in the placeholders in the generated project-local files.
+4. Keep local agent files focused on repo-specific deltas.
+5. Add only the skills and standards the team expects to use regularly.
+6. Record the source and import date in `docs/agent-setup.md`.
 
 Suggested first-pass imports for a modern web app:
 
@@ -24,10 +24,10 @@ Suggested first-pass imports for a modern web app:
 
 ## Recommended Workflow For An Existing Project
 
-1. Start with the thin templates, not a full standards dump.
-2. Compare existing local conventions against shared standards.
-3. Import only the standards that reduce ambiguity or repeated review comments.
-4. Sync skills that fit current development workflows.
+1. Download or extract a fresh snapshot of this repository.
+2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run .`.
+3. Compare existing local conventions against shared standards before applying updates.
+4. Apply additive sync or explicit update sync only for files you want refreshed.
 5. Capture repo-specific exceptions in local files instead of forking shared standards immediately.
 
 For mature repos, gradual adoption is usually better than broad replacement.
@@ -51,7 +51,7 @@ See [docs/examples/downstream-layout.md](examples/downstream-layout.md) for a co
 Many teams will use a hybrid model:
 
 - local root agent files are owned by the repo
-- shared standards and skills are periodically synced
+- shared standards and skills are periodically refreshed from downloaded snapshots of this repo
 
 ## What Should Remain Local
 

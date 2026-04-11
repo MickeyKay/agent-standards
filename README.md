@@ -35,30 +35,22 @@ Use this repo as a package of text assets and scripts, not as a runtime dependen
 
 Recommended usage modes:
 
-### 1. Copy into a new repo
+### 1. Download a snapshot into a new repo
 
-Best when starting greenfield work or when the project wants to own its files after setup.
+This is the default and simplest workflow.
 
-- copy `templates/AGENTS.project-template.md` to `AGENTS.md`
-- copy `templates/CLAUDE.project-template.md` to `CLAUDE.md`
-- copy selected files from `standards/`
-- copy selected skills into a local `.codex/skills/` or similar repo-owned location if needed
+- from inside the target repo, download or extract a snapshot of this repo into a temporary folder
+- run `scripts/bootstrap-project.sh` from that snapshot against `.`
+- fill in the generated local files
+- optionally delete the downloaded snapshot afterward
 
-### 2. Sync selected files into an existing repo
+### 2. Re-download later and sync selected files
 
-Best when multiple repos should stay aligned over time.
+Best when a project wants a lightweight refresh path without keeping a permanent linked copy.
 
-- sync shared standards into a local `docs/standards/` or `standards/` folder
-- sync shared skills into a repo-owned skill directory
-- keep local root agent files thin and repo-specific
-
-### 3. Bootstrap from templates
-
-Best when you want a fast, repeatable setup path.
-
-- use `scripts/bootstrap-project.sh` to scaffold thin project files
-- include the minimal Claude settings template
-- use `scripts/sync-standards.sh` later to refresh shared material
+- download a fresh snapshot of this repo when you want updates
+- preview changes with `scripts/sync-standards.sh --dry-run`
+- apply additive or explicit update sync as needed
 
 ## Release And Sync Expectations
 
@@ -126,15 +118,16 @@ When standards change:
 
 For a new repo:
 
-1. Run `scripts/bootstrap-project.sh /path/to/target-repo`.
-2. Fill in the project-local placeholders in `AGENTS.md`, `CLAUDE.md`, and `README`.
-3. Copy or sync only the standards and skills the project will actually use.
+1. From inside the target repo, download or extract a snapshot of this repository somewhere local or temporary.
+2. Run `bash path/to/agent-standards/scripts/bootstrap-project.sh .`.
+3. Fill in the project-local placeholders in `AGENTS.md`, `CLAUDE.md`, and `docs/agent-setup.md`.
+4. Optionally delete the downloaded snapshot after setup.
 
 For an existing repo:
 
-1. Keep existing local conventions that are working.
-2. Import the thin project templates.
-3. Sync in selected standards and skills.
+1. Download or extract a fresh snapshot of this repository.
+2. Preview changes with `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run .`.
+3. Apply additive sync or explicit update sync only where intended.
 4. Resolve conflicts explicitly instead of forcing a broad rewrite.
 
 See [docs/usage.md](docs/usage.md) and [docs/sync-strategy.md](docs/sync-strategy.md) for the detailed workflow.
@@ -145,6 +138,6 @@ See [docs/releases.md](docs/releases.md) for downstream-facing change notes and 
 The default convention in this repository is:
 
 - root `AGENTS.md` and `CLAUDE.md` remain owned by each downstream repo
-- shared `standards/` and `skills/` are the syncable layer
+- shared `standards/` and `skills/` are the reusable layer copied or refreshed from downloaded snapshots of this repo
 
-That split keeps local operating context local while allowing shared policy and workflows to evolve centrally.
+That split keeps local operating context local while still allowing teams to refresh shared policy and workflows when needed.

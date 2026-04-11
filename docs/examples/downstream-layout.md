@@ -35,6 +35,21 @@ my-app/
 - only actively used skills are present
 - repo-specific architecture notes stay local
 
+## Example Setup Flow
+
+From inside `my-app/`:
+
+```bash
+bash path/to/agent-standards/scripts/bootstrap-project.sh .
+```
+
+Later refreshes:
+
+```bash
+bash path/to/agent-standards/scripts/sync-standards.sh --dry-run .
+bash path/to/agent-standards/scripts/sync-standards.sh --update .
+```
+
 ## Root File Pattern
 
 Use root `AGENTS.md` and `CLAUDE.md` to answer:

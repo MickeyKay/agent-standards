@@ -33,9 +33,9 @@ Pick one of these operating models per file or directory:
 
 The downstream repo copies the file once and evolves it independently.
 
-### Centrally synced
+### Refreshed from shared snapshots
 
-The downstream repo refreshes from this repository on a regular cadence.
+The downstream repo periodically re-downloads this repository and refreshes selected files.
 
 ### Local wrapper around shared material
 
@@ -53,9 +53,9 @@ This third model is the best default for root agent files.
 
 Practical script guidance:
 
-- use `scripts/sync-standards.sh --dry-run /path/to/repo` to preview
-- use `scripts/sync-standards.sh /path/to/repo` for additive sync only
-- use `scripts/sync-standards.sh --update /path/to/repo` when you intentionally want changed shared files refreshed
+- use `bash path/to/agent-standards/scripts/sync-standards.sh --dry-run .` to preview from inside the target repo
+- use `bash path/to/agent-standards/scripts/sync-standards.sh .` for additive sync only
+- use `bash path/to/agent-standards/scripts/sync-standards.sh --update .` when you intentionally want changed shared files refreshed
 - review `docs/releases.md` before update syncs across many repos
 
 ## When To Copy Instead

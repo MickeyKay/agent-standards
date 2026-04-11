@@ -22,3 +22,9 @@ This repository uses a lightweight change log for downstream consumers. The goal
 - Added: initial repository structure, shared standards, reusable skills, downstream templates, Claude settings template, helper scripts, migration standards, contributor guidance, example downstream layout, and validation workflow.
 - Changed: sync guidance now distinguishes additive sync from explicit update sync.
 - Downstream impact: new consumers can bootstrap directly; existing repos can selectively sync standards and skills and choose whether to refresh changed files with `--update`.
+
+## 2026-04-11
+
+- Added: explicit downloaded-snapshot workflow guidance for bootstrapping and refreshing from inside a target repo.
+- Changed: documentation now treats downloaded snapshots as the default consumption path instead of implying a persistent linked copy.
+- Downstream impact: the simplest recommended setup is now to download a snapshot, run bootstrap or sync from it, and optionally discard the snapshot afterward.
