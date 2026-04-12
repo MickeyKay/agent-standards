@@ -13,6 +13,18 @@ This is not an execution framework. Do not introduce orchestration layers, proce
 - Converge early. Do not carry multiple vague options forward.
 - Force decisions. If several options exist, choose one unless a clarifying question is required.
 - Stress-test the idea aggressively before planning.
+- Avoid common failure modes:
+  - overengineering early architecture
+  - expanding scope instead of sharpening it
+  - deferring key decisions
+  - producing plans that require further clarification before implementation
+- Remove unnecessary verbosity:
+  - avoid repetition
+  - avoid explanatory filler
+  - keep each section as compact as possible without losing clarity
+- After generating a full output, perform a quick internal critique:
+  - identify weak areas
+  - tighten them before returning
 - Keep outputs concise, structured, and usable as repo docs or direct implementation input.
 
 ## Clarifying Question Rule
@@ -51,15 +63,22 @@ Produce:
 
 Do:
 
-- turn the concept into a concrete MVP candidate
-- define the main workflow or user experience
-- name the likely system boundaries
+- explore ways this product could be meaningfully better than the initial idea
+- introduce improvements, features, or approaches the user may not have considered
+- focus on high-leverage differentiation, not feature bloat
+- define the core workflow or user experience
+- identify system boundaries and key components
 - make explicit assumptions where needed
+
+Constraints:
+
+- prioritize ideas that significantly improve outcomes or usability
+- avoid adding unnecessary complexity
 
 Produce:
 
 - refined concept
-- MVP candidate
+- improved MVP candidate
 - explicit assumptions
 - initial architecture direction
 
@@ -111,6 +130,13 @@ Produce:
 - phased implementation plan
 - near-term milestones
 - risks and open questions
+- confidence level (high / medium / low)
+
+Definition:
+
+- high: ready to build immediately
+- medium: minor gaps or assumptions remain
+- low: significant uncertainty remains
 
 ## Output Format
 
@@ -163,9 +189,45 @@ Phase 3:
 - open questions that still matter
 - only include questions that remain genuinely unresolved after reasonable assumptions
 
+## Final Validation Pass (Required)
+
+Before returning the final output:
+
+- Verify:
+  - the MVP is minimal and internally consistent
+  - the first vertical slice is actually buildable
+  - key risks have been identified
+  - no critical ambiguity remains
+- Perform a quick defect scan:
+  - missing required sections
+  - contradictions between sections
+  - unclear or underspecified implementation steps
+  - unnecessary verbosity
+
+- Fix any issues before returning
+
+- If issues are found:
+  - If issues are minor:
+    - fix them directly
+  - If issues indicate a deeper flaw (scope, architecture, or assumptions):
+    - briefly identify the root problem
+    - re-run the relevant phase (Challenge or Converge) before returning
+  - update the output before returning
+
+- Do not loop more than once
+- prioritize convergence over perfection
+
+Do not return an unvalidated plan.
+
 ## Quality Bar
 
 - Be practical, not theoretical.
 - Prefer a strong default over a menu of vague options.
 - Make assumptions visible.
 - Keep the result tight enough to drop into a repo doc or hand directly to an implementation agent.
+- The output should feel like something a senior engineer or product lead could execute without needing major clarification.
+- The plan should meet these criteria:
+  - Coherence: all parts of the system fit together without contradiction
+  - Minimality: the MVP contains no unnecessary scope
+  - Buildability: the first vertical slice can be implemented without additional design work
+  - Leverage: the approach meaningfully improves on a naive or baseline solution
