@@ -195,9 +195,11 @@ Before returning the final output:
 
 - Verify:
   - the MVP is minimal and internally consistent
+  - the solution aligns with the original problem
   - the first vertical slice is actually buildable
   - key risks have been identified
   - no critical ambiguity remains
+
 - Perform a quick defect scan:
   - missing required sections
   - contradictions between sections
@@ -218,6 +220,75 @@ Before returning the final output:
 - prioritize convergence over perfection
 
 Do not return an unvalidated plan.
+
+## Delivery Behavior
+
+After producing the full output:
+
+- Do not stop abruptly.
+- Provide a short **Next Actions** section offering:
+
+  1. Generate repo-ready markdown artifacts
+  2. Generate a Codex CLI implementation prompt
+  3. Refine or re-run part of the plan
+
+### Natural Language Triggers
+
+Interpret user intent without requiring strict phrases.
+
+Examples:
+
+If the user says:
+- "looks good, generate the docs"
+- "turn this into repo artifacts"
+- "create the markdown files"
+
+→ Generate repo-ready artifacts
+
+If the user says:
+- "give me the Codex prompt"
+- "let's implement this"
+- "generate the build prompt"
+
+→ Generate a Codex CLI prompt for the next step
+
+If the user says:
+- "this feels off"
+- "tighten the MVP"
+- "rethink this part"
+
+→ Re-run from Challenge or Converge with the new constraint
+
+Do not require the user to say "Artifact Mode" or "Execution Mode".
+
+## Artifact Generation Rules
+
+When generating repo artifacts:
+
+- Output each file with clear headers:
+
+  === docs/prd.md ===
+  === docs/mvp-spec.md ===
+  === docs/architecture.md ===
+  === docs/implementation-plan.md ===
+  === docs/specs/phase-1-mvp.md ===
+
+- Remove repetition across files
+- Keep content concise and opinionated
+- Ensure each file is independently usable by an implementation agent
+
+## Execution Handoff Rules
+
+When generating a Codex CLI prompt:
+
+- Specify which docs to read first
+- Require Codex to:
+  1. Summarize understanding
+  2. Identify ambiguities
+  3. Propose the smallest valuable vertical slice
+  4. Implement only that slice
+
+- Keep scope tight and practical
 
 ## Quality Bar
 
