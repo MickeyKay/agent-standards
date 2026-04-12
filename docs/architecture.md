@@ -24,6 +24,7 @@ It contains:
 
 - engineering standards in `standards/`
 - reusable workflows in `skills/`
+- reusable thinking prompts in `prompts/`
 - thin project templates in `templates/`
 - usage and sync guidance in `docs/`
 
@@ -76,6 +77,7 @@ The operating model is simple:
 
 - `standards/`: durable engineering standards
 - `skills/`: reusable workflows
+- `prompts/`: reusable thinking inputs for shaping specs and plans
 - `templates/`: downstream starting points
 - `docs/`: architecture, usage, and sync strategy
 - `scripts/`: small helper scripts, not orchestration

@@ -17,6 +17,12 @@ This repository uses a lightweight change log for downstream consumers. The goal
 - Downstream impact:
 ```
 
+## 2026-04-12
+
+- Added: `docs/spec-pipeline.md` defining a five-phase loop from shaping through planning, plus `prompts/orchestrator.md` as a reusable thinking prompt for turning high-level ideas into build-ready specs.
+- Changed: architecture, README, and usage docs now recognize `prompts/` as a lightweight reusable layer for spec shaping without introducing orchestration.
+- Downstream impact: downstream repos can adopt a shared discovery and planning prompt alongside standards and skills when they want more consistent early-stage product and architecture framing.
+
 ## 2026-04-11
 
 - Added: initial repository structure, shared standards, reusable skills, downstream templates, Claude settings template, helper scripts, migration standards, contributor guidance, example downstream layout, and validation workflow.

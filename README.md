@@ -37,6 +37,7 @@ Use this repository to centralize:
 - shared coding and review standards
 - shared git and collaboration conventions
 - reusable agent workflows captured as skills
+- reusable thinking prompts for shaping ideas into plans
 - thin project templates for `AGENTS.md` and `CLAUDE.md`
 - simple bootstrap and sync scripts for downstream repos
 
@@ -78,6 +79,7 @@ This repo keeps change management lightweight, but downstream consumers still ne
 
 - `AGENTS.md` is the root entry point for Codex-style agent guidance
 - `skills/` follows the Codex skill convention with per-skill `SKILL.md`
+- `prompts/` holds reusable prompt inputs that stay lighter than full skills
 
 ### Claude-specific
 
@@ -96,6 +98,7 @@ The intent is to keep tool-specific files small and let the substantive standard
   docs/
   standards/
   skills/
+  prompts/
   claude/
   templates/
   scripts/

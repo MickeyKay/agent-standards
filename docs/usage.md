@@ -73,6 +73,7 @@ Many teams will use a hybrid model:
 
 - local root agent files are owned by the repo
 - shared standards and skills are periodically refreshed from downloaded snapshots of this repo
+- reusable prompts can be copied in when a team wants a stable thinking or spec-shaping input
 
 ## What Should Remain Local
 
@@ -100,5 +101,6 @@ Good pattern:
 - root file says where standards live
 - standards carry durable rules
 - skills carry reusable procedures
+- prompts carry reusable thinking structures when a team wants repeatable spec shaping without adding a framework
 
 This keeps agent context more relevant and reduces contradictory duplication.
