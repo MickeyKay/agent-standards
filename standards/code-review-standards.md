@@ -58,3 +58,16 @@ Approve when:
 - remaining debt is understood and intentional
 
 Do not block on personal preference when the change is coherent and aligned with local standards.
+
+## Applied Checklist
+
+Use this quick pass before approval:
+
+- intended behavior change is explicit
+- user-facing regressions were checked
+- server-side authorization was checked for sensitive paths
+- migration/data-integrity risks were reviewed when relevant
+- loading, error, empty, and permission states were considered
+- tests cover meaningful risk, not only happy path
+- required issues are clearly separated from optional polish
+- residual risks are called out in the review summary

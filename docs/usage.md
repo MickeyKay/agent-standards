@@ -104,3 +104,14 @@ Good pattern:
 - prompts carry reusable thinking structures when a team wants repeatable spec shaping without adding a framework
 
 This keeps agent context more relevant and reduces contradictory duplication.
+
+## Skill Selection And Auto-Detection
+
+Use [docs/catalog.md](catalog.md) as the default routing map for skills and prompts.
+
+Recommended behavior for agents and maintainers:
+
+- choose skills by intent even when users do not explicitly name a skill
+- announce selected skill briefly and proceed
+- avoid long skill chains unless risk justifies it
+- capture repeated unserved requests as candidates for new skills

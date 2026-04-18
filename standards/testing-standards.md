@@ -58,3 +58,16 @@ Lower priority:
 - Refactor repetitive setup when it improves clarity, not just terseness.
 - Keep factories and fixtures realistic but small.
 - Fix flaky tests promptly; do not normalize rerunning until green.
+
+## Applied Checklist
+
+Before adding or approving tests, verify:
+
+- tests target meaningful behavior and known risk
+- chosen test level is the highest reliable level
+- assertions focus on outcomes/contracts
+- unhappy paths are covered where failures matter
+- authorization and validation behavior are tested on server paths
+- test data and fixtures are realistic enough for the scenario
+- flaky or brittle assertions are avoided
+- remaining test gaps are explicitly documented

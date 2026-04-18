@@ -15,6 +15,7 @@ required_files=(
   "docs/sync-strategy.md"
   "docs/releases.md"
   "docs/spec-pipeline.md"
+  "docs/catalog.md"
   "docs/contributing-skills.md"
   "prompts/orchestrator.md"
   "standards/README.md"
@@ -46,8 +47,8 @@ fi
 
 echo "Checking skills..."
 skill_count="$(find "${REPO_ROOT}/skills" -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | wc -l | tr -d ' ')"
-if [[ "${skill_count}" -lt 7 ]]; then
-  echo "Expected at least 7 skills, found ${skill_count}" >&2
+if [[ "${skill_count}" -lt 12 ]]; then
+  echo "Expected at least 12 skills, found ${skill_count}" >&2
   exit 1
 fi
 
@@ -58,6 +59,23 @@ while IFS= read -r skill_dir; do
     exit 1
   fi
 done < <(find "${REPO_ROOT}/skills" -mindepth 1 -maxdepth 1 -type d | sort)
+
+
+echo "Checking skill frontmatter fields..."
+while IFS= read -r skill_file; do
+  if ! grep -Eq '^name:' "${skill_file}"; then
+    echo "Missing name frontmatter in ${skill_file}" >&2
+    exit 1
+  fi
+  if ! grep -Eq '^description:' "${skill_file}"; then
+    echo "Missing description frontmatter in ${skill_file}" >&2
+    exit 1
+  fi
+  if ! grep -Eq '^when_to_use:' "${skill_file}"; then
+    echo "Missing when_to_use frontmatter in ${skill_file}" >&2
+    exit 1
+  fi
+done < <(find "${REPO_ROOT}/skills" -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | sort)
 
 echo "Checking standards index links..."
 while IFS= read -r standard_file; do
