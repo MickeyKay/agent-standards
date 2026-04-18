@@ -157,7 +157,7 @@ Most meaningful gaps relative to your stated high-value recurring needs:
 - `prompts/` → reusable structured thinking inputs (when no workflow automation needed)
 - `docs/catalog.md` → single index for selection and navigation
 
-(You can migrate gradually without breaking current paths by adding category tags first, then folder moves later.)
+(You can migrate gradually without breaking current paths by adding category tags first, then folder moves later. If maintainers adopt nested skill folders, they should update the enforced repo contract in `AGENTS.md`, `docs/contributing-skills.md`, and `scripts/validate-repo.sh` in the same change so validation and contributor guidance stay aligned.)
 
 ## 2) Minimum recommended new skills (high leverage)
 
