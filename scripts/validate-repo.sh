@@ -60,18 +60,47 @@ while IFS= read -r skill_dir; do
   fi
 done < <(find "${REPO_ROOT}/skills" -mindepth 1 -maxdepth 1 -type d | sort)
 
+extract_frontmatter() {
+  local file="$1"
+
+  awk '
+    NR == 1 {
+      if ($0 != "---") {
+        exit 2
+      }
+      next
+    }
+    $0 == "---" {
+      found_closing = 1
+      exit 0
+    }
+    {
+      print
+    }
+    END {
+      if (!found_closing) {
+        exit 3
+      }
+    }
+  ' "${file}"
+}
 
 echo "Checking skill frontmatter fields..."
 while IFS= read -r skill_file; do
-  if ! grep -Eq '^name:' "${skill_file}"; then
+  if ! frontmatter="$(extract_frontmatter "${skill_file}")"; then
+    echo "Missing valid frontmatter block in ${skill_file}" >&2
+    exit 1
+  fi
+
+  if ! grep -Eq '^name:[[:space:]]' <<<"${frontmatter}"; then
     echo "Missing name frontmatter in ${skill_file}" >&2
     exit 1
   fi
-  if ! grep -Eq '^description:' "${skill_file}"; then
+  if ! grep -Eq '^description:[[:space:]]' <<<"${frontmatter}"; then
     echo "Missing description frontmatter in ${skill_file}" >&2
     exit 1
   fi
-  if ! grep -Eq '^when_to_use:' "${skill_file}"; then
+  if ! grep -Eq '^when_to_use:[[:space:]]' <<<"${frontmatter}"; then
     echo "Missing when_to_use frontmatter in ${skill_file}" >&2
     exit 1
   fi
