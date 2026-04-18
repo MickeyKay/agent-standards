@@ -65,10 +65,14 @@ extract_frontmatter() {
 
   awk '
     NR == 1 {
+      sub(/\r$/, "", $0)
       if ($0 != "---") {
         exit 2
       }
       next
+    }
+    {
+      sub(/\r$/, "", $0)
     }
     $0 == "---" {
       found_closing = 1
