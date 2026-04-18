@@ -17,6 +17,12 @@ This repository uses a lightweight change log for downstream consumers. The goal
 - Downstream impact:
 ```
 
+## 2026-04-18
+
+- Added: `docs/repo-audit-2026-04-18.md` with a full repository audit covering current strengths, weaknesses, workflow coverage gaps, recommended target shape, and a prioritized improvement plan.
+- Changed: documentation now includes a concrete roadmap for expanding beyond engineering execution workflows into strategy, UX critique, and decision-framing skills.
+- Downstream impact: maintainers have a grounded baseline for deciding what to preserve, what to consolidate, and which missing skills to add first for higher-leverage downstream reuse.
+
 ## 2026-04-12
 
 - Added: `docs/spec-pipeline.md` defining a five-phase loop from shaping through planning, plus `prompts/orchestrator.md` as a reusable thinking prompt for turning high-level ideas into build-ready specs.
