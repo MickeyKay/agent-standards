@@ -24,3 +24,10 @@ This repository is the shared source of truth for reusable agent standards, work
 - Optimize for portability, maintainability, and real-world reuse.
 - Prefer clear examples over broad theory.
 - Do not duplicate the same guidance across Codex and Claude files when shared docs can carry it once.
+
+## Skill Auto-Detection Expectations
+
+- Proactively map user intent to relevant skills using `docs/catalog.md` even when the user does not explicitly name a skill.
+- When a skill matches clearly, apply it and briefly state which skill is being used and why.
+- If multiple skills fit, choose the smallest one that addresses the highest-risk part first.
+- If no skill fits, proceed with normal reasoning and note the missing capability so the repo can evolve.

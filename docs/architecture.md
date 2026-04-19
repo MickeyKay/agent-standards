@@ -27,6 +27,7 @@ It contains:
 - reusable thinking prompts in `prompts/`
 - thin project templates in `templates/`
 - usage and sync guidance in `docs/`
+- workflow routing in `docs/catalog.md` to improve skill auto-detection and selection consistency
 
 This is the canonical place for conventions that should be reused across multiple repos.
 

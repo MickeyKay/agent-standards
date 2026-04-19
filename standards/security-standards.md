@@ -43,3 +43,16 @@ Security work should reduce real risk without turning everyday delivery into cer
 - Flag security-sensitive changes clearly in PRs.
 - When you cannot fully solve a security concern immediately, document the risk, mitigation, and follow-up path.
 - Avoid introducing convenience shortcuts that create obvious security footguns.
+
+## Applied Checklist
+
+Before merge for security-sensitive changes, verify:
+
+- sensitive actions are authorized on the server
+- untrusted inputs are validated at boundaries
+- secrets and tokens are not exposed in code or logs
+- data access patterns avoid injection and ownership bypass
+- user-controlled redirects/HTML/URLs are handled safely
+- background jobs and webhooks enforce trust boundaries
+- dependencies and third-party integrations were risk-reviewed
+- unresolved security risk is documented with mitigation and follow-up

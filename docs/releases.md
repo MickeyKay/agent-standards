@@ -17,6 +17,21 @@ This repository uses a lightweight change log for downstream consumers. The goal
 - Downstream impact:
 ```
 
+## 2026-04-18
+
+- Added: `docs/catalog.md` as the workflow routing index plus five new reusable skills: `engineering-proposal-critique`, `product-opportunity-assessment`, `ux-critique`, `decision-framing`, and `design-qa`.
+- Changed: root agent guidance and usage docs now include explicit skill auto-detection expectations so agents can select workflows from intent without requiring manual skill prompts.
+- Changed: `docs/contributing-skills.md` now defines required skill frontmatter, optional metadata, anti-pattern guidance, and auto-detection writing rules.
+- Changed: code review, testing, and security standards now include compact applied checklists for faster operational use.
+- Changed: repository validator now checks for `docs/catalog.md`, enforces higher minimum skill count, and validates required skill frontmatter fields.
+- Downstream impact: consumers get stronger default skill routing and broader workflow coverage (engineering critique, product opportunity analysis, UX critique, decision framing, and design QA) with minimal manual prompting.
+
+## 2026-04-18
+
+- Added: `docs/repo-audit-2026-04-18.md` with a full repository audit covering current strengths, weaknesses, workflow coverage gaps, recommended target shape, and a prioritized improvement plan.
+- Changed: documentation now includes a concrete roadmap for expanding beyond engineering execution workflows into strategy, UX critique, and decision-framing skills.
+- Downstream impact: maintainers have a grounded baseline for deciding what to preserve, what to consolidate, and which missing skills to add first for higher-leverage downstream reuse.
+
 ## 2026-04-12
 
 - Added: `docs/spec-pipeline.md` defining a five-phase loop from shaping through planning, plus `prompts/orchestrator.md` as a reusable thinking prompt for turning high-level ideas into build-ready specs.

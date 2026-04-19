@@ -80,6 +80,7 @@ This repo keeps change management lightweight, but downstream consumers still ne
 - `AGENTS.md` is the root entry point for Codex-style agent guidance
 - `skills/` follows the Codex skill convention with per-skill `SKILL.md`
 - `prompts/` holds reusable prompt inputs that stay lighter than full skills
+- `docs/catalog.md` maps intent to skills/prompts so agents can auto-select workflows
 
 ### Claude-specific
 
@@ -138,6 +139,7 @@ For an existing repo:
 4. Resolve conflicts explicitly instead of forcing a broad rewrite.
 
 See [docs/usage.md](docs/usage.md) and [docs/sync-strategy.md](docs/sync-strategy.md) for the detailed workflow.
+See [docs/catalog.md](docs/catalog.md) for workflow routing and auto-detection cues.
 See [docs/releases.md](docs/releases.md) for downstream-facing change notes and [docs/examples/downstream-layout.md](docs/examples/downstream-layout.md) for a concrete consumer layout.
 
 ## Default Downstream Ownership Model

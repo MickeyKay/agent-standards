@@ -15,6 +15,7 @@ required_files=(
   "docs/sync-strategy.md"
   "docs/releases.md"
   "docs/spec-pipeline.md"
+  "docs/catalog.md"
   "docs/contributing-skills.md"
   "prompts/orchestrator.md"
   "standards/README.md"
@@ -46,8 +47,8 @@ fi
 
 echo "Checking skills..."
 skill_count="$(find "${REPO_ROOT}/skills" -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | wc -l | tr -d ' ')"
-if [[ "${skill_count}" -lt 7 ]]; then
-  echo "Expected at least 7 skills, found ${skill_count}" >&2
+if [[ "${skill_count}" -lt 12 ]]; then
+  echo "Expected at least 12 skills, found ${skill_count}" >&2
   exit 1
 fi
 
@@ -58,6 +59,60 @@ while IFS= read -r skill_dir; do
     exit 1
   fi
 done < <(find "${REPO_ROOT}/skills" -mindepth 1 -maxdepth 1 -type d | sort)
+
+extract_frontmatter() {
+  local file="$1"
+
+  awk '
+    BEGIN {
+      bom = sprintf("%c%c%c", 239, 187, 191)
+    }
+    NR == 1 {
+      sub("^" bom, "", $0)
+      sub(/\r$/, "", $0)
+      if ($0 != "---") {
+        exit 2
+      }
+      next
+    }
+    {
+      sub(/\r$/, "", $0)
+    }
+    $0 == "---" {
+      found_closing = 1
+      exit 0
+    }
+    {
+      print
+    }
+    END {
+      if (!found_closing) {
+        exit 3
+      }
+    }
+  ' "${file}"
+}
+
+echo "Checking skill frontmatter fields..."
+while IFS= read -r skill_file; do
+  if ! frontmatter="$(extract_frontmatter "${skill_file}")"; then
+    echo "Missing valid frontmatter block in ${skill_file}" >&2
+    exit 1
+  fi
+
+  if ! grep -Eq '^name:[[:space:]]' <<<"${frontmatter}"; then
+    echo "Missing name frontmatter in ${skill_file}" >&2
+    exit 1
+  fi
+  if ! grep -Eq '^description:[[:space:]]' <<<"${frontmatter}"; then
+    echo "Missing description frontmatter in ${skill_file}" >&2
+    exit 1
+  fi
+  if ! grep -Eq '^when_to_use:[[:space:]]' <<<"${frontmatter}"; then
+    echo "Missing when_to_use frontmatter in ${skill_file}" >&2
+    exit 1
+  fi
+done < <(find "${REPO_ROOT}/skills" -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | sort)
 
 echo "Checking standards index links..."
 while IFS= read -r standard_file; do
