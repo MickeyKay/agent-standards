@@ -64,7 +64,11 @@ extract_frontmatter() {
   local file="$1"
 
   awk '
+    BEGIN {
+      bom = sprintf("%c%c%c", 239, 187, 191)
+    }
     NR == 1 {
+      sub("^" bom, "", $0)
       sub(/\r$/, "", $0)
       if ($0 != "---") {
         exit 2
